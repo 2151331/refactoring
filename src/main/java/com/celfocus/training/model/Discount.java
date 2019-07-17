@@ -2,14 +2,11 @@ package com.celfocus.training.model;
 
 public class Discount extends AbstractModel {
 
-    private double discount;
+    private double percentageOfDiscount;
 
-    public Discount(int id, double discount) {
+    public Discount(int id, double percentageOfDiscount) {
         super(id);
-        this.discount = discount;
+        this.percentageOfDiscount = percentageOfDiscount;
     }
 
-    public double getDiscount() {
-        return discount;
-    }
 }

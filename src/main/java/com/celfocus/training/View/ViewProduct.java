@@ -3,6 +3,7 @@ package com.celfocus.training.View;
 import com.celfocus.training.business.exception.DeleteException;
 import com.celfocus.training.business.exception.FindException;
 import com.celfocus.training.business.exception.SaveException;
+import com.celfocus.training.business.logger.ConsoleLogger;
 import com.celfocus.training.controller.IProductController;
 import com.celfocus.training.controller.dtos.ProductDTO;
 
@@ -10,10 +11,13 @@ import java.util.List;
 
 public class ViewProduct {
 
+    private ConsoleLogger consoleLogger;
+    public static final String SPAN = "<span>";
     IProductController productController;
 
     public ViewProduct(IProductController productController) {
         this.productController = productController;
+        this.consoleLogger = new ConsoleLogger();
     }
 
     public void saveProduct(ProductDTO productDTO) {
@@ -29,16 +33,13 @@ public class ViewProduct {
     public void printProducts(){
         List<ProductDTO> allProductDTO = productController.getAllProductDTO();
 
-        System.out.println();
-        System.out.println("All Products");
-        System.out.println("----------------");
+        this.consoleLogger.writeInfo("All Products");
 
         for (ProductDTO productDTO : allProductDTO) {
-            System.out.println(productDTO);
+            this.consoleLogger.writeInfo(productDTO.toString());
         }
 
-        System.out.println("----------------");
-        System.out.println();
+       this.consoleLogger.writeInfo("----------");
     }
 
     public String showUser(TypeFile typeFile, ProductDTO productDTO) {
@@ -63,8 +64,8 @@ public class ViewProduct {
         stringBuilder
                 .append("<div>")
                 .append("<h1>Product</h1>")
-                .append("<span>").append(productDTO.getProductName()).append("<span>")
-                .append("<span>").append(productDTO.getAmount()).append("<span>")
+                .append(SPAN).append(productDTO.getProductName()).append(SPAN)
+                .append(SPAN).append(productDTO.getAmount()).append(SPAN)
                 .append("</div>");
 
         return stringBuilder.toString();

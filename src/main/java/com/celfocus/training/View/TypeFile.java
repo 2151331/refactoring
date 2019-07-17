@@ -1,6 +1,6 @@
 package com.celfocus.training.View;
 
-public enum  TypeFile {
+public enum TypeFile {
     HTML,
     XML
 }

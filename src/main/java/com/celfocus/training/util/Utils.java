@@ -16,13 +16,14 @@ import static com.celfocus.training.util.constant.ConstantStrings.FORMAT_DATE;
 
 public final class Utils {
 
-    private Utils() {};
+    private Utils() {
+    }
 
-    static MessageDigest SHA256;
+    static MessageDigest SHA256_hash;
     
     static {
         try {
-            SHA256 = MessageDigest.getInstance("SHA-256");
+            SHA256_hash = MessageDigest.getInstance("SHA-256");
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
@@ -33,7 +34,7 @@ public final class Utils {
     }
     
     public static byte[] toSHA256(byte[] bytes) {
-        return SHA256.digest(bytes);
+        return SHA256_hash.digest(bytes);
     }
 
     public static boolean isNullOrEmpty(String str) {
@@ -93,7 +94,7 @@ public final class Utils {
             throw new IllegalArgumentException("Length should be pair");
         }
         int length = ts.length / 2;
-        Map<K, V> map = new HashMap<K, V>(length);
+        Map<K, V> map = new HashMap<>(length);
         for (int index = 0; index <= length; index+=2) {
             map.put((K) ts[index], (V) ts[index + 1]);
         }
@@ -110,17 +111,14 @@ public final class Utils {
                 .append("/")
                 .append(day);
 
-        Date date = parseStringToDate(stringBuilder.toString());
-        return date;
+        return parseStringToDate(stringBuilder.toString());
     }
 
     public static int getAgeFromDate(Date birthDate) {
         Calendar calendarNow = getCalendar(new Date(System.currentTimeMillis()));
         Calendar calendarBirthDate = getCalendar(birthDate);
 
-        int age = calendarNow.get(Calendar.YEAR) - calendarBirthDate.get(Calendar.YEAR);
-
-        return age;
+        return calendarNow.get(Calendar.YEAR) - calendarBirthDate.get(Calendar.YEAR);
 
     }
 

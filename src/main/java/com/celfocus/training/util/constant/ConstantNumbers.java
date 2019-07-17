@@ -8,5 +8,7 @@ public class ConstantNumbers {
     public static final int START_QUANTITY = 1;
     public static final int ID_TO_DEFAULT = 00;
 
+    private ConstantNumbers() {
+    }
 }
 

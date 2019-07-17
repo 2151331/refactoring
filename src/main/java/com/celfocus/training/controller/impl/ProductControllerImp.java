@@ -86,10 +86,7 @@ public class ProductControllerImp implements IProductController {
     }
 
     private boolean isProductDTOFromViewNull(ProductDTO productDTOFromView) {
-        if (productDTOFromView == null || productDTOFromView.getProductName() == null) {
-            return true;
-        }
-        return false;
+        return productDTOFromView == null || productDTOFromView.getProductName() == null;
     }
 
     private Product convertProductDtoToProduct(ProductDTO productDTOFromView) {

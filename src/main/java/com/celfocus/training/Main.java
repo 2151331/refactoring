@@ -42,9 +42,6 @@ public class Main {
         ProductDTO douroTravel = new ProductDTO("Douro Travel in boat.", 59.99);
         ProductDTO clerigosTower = new ProductDTO("Clérigos tower visit.", 12.00);
 
-        ProductDTO ribeiraTour = new ProductDTO("Ribeira tour.", 27.50);
-        ProductDTO seaLifeTour = new ProductDTO("SeaLife tour.", 32.00);
-
         viewProduct.saveProduct(douroTravel);
         viewProduct.saveProduct(clerigosTower);
 
